@@ -27,5 +27,9 @@ public class fifth_input {
         // Double number taken as an input
         double num4 = sc.nextDouble();
         System.out.println("Your Double number input -> " + num4);
+
+        // Boolean DataType taken as an input
+        boolean bool = sc.nextBoolean();
+        System.out.println("Your Boolean input -> " + bool);
     }
 }

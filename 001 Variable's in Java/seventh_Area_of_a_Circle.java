@@ -9,6 +9,6 @@ public class seventh_Area_of_a_Circle {
         // Here is the Value of the PI.
         double pi = Math.PI;
         double area = (pi * radius * radius) ;
-        System.out.println("IF the Radius is : " + radius + " Then Area of a Circle is -> " + area );
+        System.out.println("IF the Radius is : " + radius + "\nThen Area of a Circle is -> " + area );
     }
 }

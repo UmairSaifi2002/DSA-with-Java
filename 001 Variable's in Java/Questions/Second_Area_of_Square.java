@@ -7,8 +7,8 @@ public class Second_Area_of_Square {
          You have to output the area of the square.
         */
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please Enter the side of a Square");
+        System.out.println("Please Enter the side of a Square in meters");
         double side = sc.nextDouble();
-        System.out.println("The Area of the Square -> "+(side*side));
+        System.out.println("The Area of the Square -> "+(side*side)+" m2");
     }
 }

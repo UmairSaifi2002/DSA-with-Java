@@ -9,8 +9,14 @@ public class Income_Tax_calculator {
         */
         Scanner sc = new Scanner(System.in);
         long income = sc.nextInt();
-        if(income < 500000)    System.out.println("Your income Tax is -> " + 0);
-        else if(income >= 500000 && income < 1000000) System.out.println("Your income Tax is -> " + ((income*20)/100)  );
-        else System.out.println("Your income Tax is -> " + ((income*30)/100)  );
+        if(income < 500000) {   
+            System.out.println("Your income Tax is -> " + 0);
+        }
+        else if(income >= 500000 && income < 1000000) {
+            System.out.println("Your income Tax is -> " + ((income*20)/100)  );
+        }
+        else {
+            System.out.println("Your income Tax is -> " + ((income*30)/100)  );
+        }
     }   
 }

@@ -9,7 +9,7 @@ public class fifth_input {
         String input1 = sc.next(); // -> .next() stores the entry of the user unit the space will occur in the input
         System.out.println("Your stringOne input -> " + input1);
         
-        String input2 = sc.nextLine(); // -> .nextLine() stores the user input with spaces occur inbetween the input
+        String input2 = sc.nextLine(); // -> .nextLine() stores the user input with spaces occur in between the input
         System.out.println("Your stringTwo input -> " + input2);
 
         // Integer taken as an input

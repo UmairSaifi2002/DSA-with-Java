@@ -4,6 +4,7 @@ public class second_Function_with_Parameters{
     public static int calculateSum(int a, int b){
         return (a+b);
     }
+    @SuppressWarnings("resource")
     public static void main(String args[]){
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter First Number -> ");

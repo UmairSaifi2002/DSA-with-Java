@@ -20,6 +20,7 @@ public class Binomial_Coefficient{
         long result = first / (second * third);
         return result;
     }
+    @SuppressWarnings("resource")
     public static void main(String args[]){
         Scanner scan = new Scanner(System.in);
         long n = scan.nextLong();

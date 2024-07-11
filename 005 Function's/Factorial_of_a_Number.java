@@ -11,6 +11,7 @@ public class Factorial_of_a_Number{
         }
         return fact;
     }
+    @SuppressWarnings("resource")
     public static void main(String args[]){
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter YOur Number : ");

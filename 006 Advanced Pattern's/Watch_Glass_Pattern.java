@@ -27,6 +27,7 @@ public class Watch_Glass_Pattern {
     }
 
     public static void main(String[] args) {
+        @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter row : ");
         int row = scan.nextInt();

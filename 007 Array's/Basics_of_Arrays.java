@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Basics_of_Arrays {
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);

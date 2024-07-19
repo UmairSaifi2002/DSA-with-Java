@@ -12,8 +12,8 @@ public class MAX_SubArray_Sum {
                     sum = sum + arr[j2];
                 }
                 if (max_sum < sum) max_sum = sum;
-
-            sum = 0;
+                System.out.println(sum);
+                sum = 0;
             }
         }
         return max_sum;
@@ -27,5 +27,5 @@ public class MAX_SubArray_Sum {
         System.out.println("The max sum of sub-array 'arr' is "+result);
         System.out.println("The max sum of sub-array 'arr1' is "+result1);
     }
-
+    
 }

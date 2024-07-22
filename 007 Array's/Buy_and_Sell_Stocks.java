@@ -34,7 +34,7 @@ public class Buy_and_Sell_Stocks {
     }
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        // Scanner scan = new Scanner(System.in);
         // You are given an array prices where prices[i] is the price of a given stock
         // on the ith day. You want to maximize your profit by choosing a single day to
         // buy one stock and choosing a different day in the future to sell that stock.

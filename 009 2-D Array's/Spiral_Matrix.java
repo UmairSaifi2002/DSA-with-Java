@@ -21,6 +21,7 @@ public class Spiral_Matrix {
             // yaha bottom or left m hamne ek check lagaya h kyuki jab bhi hame koi 2-D array
             // milti h agr usme center m sirf ek hi value bachti h
             // to sirf us case k liy hamne y check lagaya h
+            // like 3X3 or 5X5
             
             // bottom
             for (int j = endcol - 1; j >= startcol ; j--) {

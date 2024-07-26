@@ -1,4 +1,4 @@
-package Questions;
+
 public class Shortest_Distance{
 
     public static double coordinates(String str) {

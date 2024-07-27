@@ -43,6 +43,7 @@ public class StringBuilderExample {
         for (int i = 0; i < 10; i++) {
             str += i;
         }
+        System.out.println(str);
 
         // Using StringBuilder (more efficient)
         StringBuilder sbi = new StringBuilder();

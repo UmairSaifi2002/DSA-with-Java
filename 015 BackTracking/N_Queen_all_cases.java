@@ -27,7 +27,7 @@ public class N_Queen_all_cases {
     }
 
     public static void main(String[] args) {
-        int n = 3;
+        int n = 2;
         char arr[][] = new char[n][n];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {

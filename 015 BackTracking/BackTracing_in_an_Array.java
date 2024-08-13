@@ -1,4 +1,4 @@
-public class BackTracing_in_an_Array {
+    public class BackTracing_in_an_Array {
 
     public static void changeArr(int arr[], int index, int value) {
         // Base Case

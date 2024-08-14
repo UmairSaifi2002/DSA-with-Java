@@ -4,10 +4,10 @@ public class Find_Subsets {
         // Base Case
         if (index == str.length()) {
             if (newStr.length() == 0) {
-                System.err.println("null");
+                System.err.print("null"+" ");
             }
             else {
-                System.out.println(newStr);
+                System.out.print(newStr+" ");
             }
             return;
         }

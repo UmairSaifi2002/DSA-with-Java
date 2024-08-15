@@ -3,7 +3,7 @@ public class Find_Permutation {
     public static void permutation(String str, String newStr) {
         // Base Case
         if (str.length() == 0) {
-            System.err.print(newStr+" ");
+            System.out.print(newStr+" ");
             return;
         }
         

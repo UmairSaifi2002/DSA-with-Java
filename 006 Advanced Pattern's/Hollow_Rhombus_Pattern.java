@@ -4,13 +4,13 @@ public class Hollow_Rhombus_Pattern {
     public static void hollow_rhombus(int row, int col){
         for (int i = 0; i < row; i++) {
             for (int j = row-1; j > i; j--) {
-                System.out.print(" ");
+                System.out.print(".");
             }
             for (int j = 0; j < col; j++) {
                 if (i==0||j==0||j==col-1||i==row-1) {
                     System.out.print("X");
                 }
-                else System.out.print(" ");
+                else System.out.print(".");
             }
             System.out.println();
         }

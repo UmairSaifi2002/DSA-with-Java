@@ -1,4 +1,5 @@
 public class Grid_Ways {
+
     public static int GridWays(int i, int j, int n, int m) {
         // Time complexity: O(2^(m*n)) due to recursive calls
 
@@ -38,4 +39,5 @@ public class Grid_Ways {
         // Call the GridWays function to find the number of ways
         System.out.println(GridWays(0, 0, n, m));
     }
+    
 }

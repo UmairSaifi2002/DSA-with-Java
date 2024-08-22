@@ -3,7 +3,7 @@ import java.util.*;
 public class Container_with_Most_Water {
 
     // Function to find the maximum area using the brute force approach
-    public static void BruteForceApproach(ArrayList<Integer> Height) {
+    public static void BruteForceApproach(ArrayList<Integer> Height) { // O(n^2)
         int size = Height.size(); // Get the number of elements in the Height array
         int max = -1; // Initialize the maximum area found so far
 
@@ -32,7 +32,7 @@ public class Container_with_Most_Water {
         System.out.println(max);
     }
 
-    public static void TwoPointerApproach(ArrayList<Integer> mainList) {
+    public static void TwoPointerApproach(ArrayList<Integer> mainList) { // O(n)
         // Initialize the maximum area found so far
         int max = -1;
     
@@ -76,7 +76,7 @@ public class Container_with_Most_Water {
         Height.add(3);
         Height.add(7);
         System.out.println(Height); // Print the input heights
-        // BruteForceApproach(Height); // Call the function to find the maximum area
+        BruteForceApproach(Height); // Call the function to find the maximum area
         TwoPointerApproach(Height);
     }
 }

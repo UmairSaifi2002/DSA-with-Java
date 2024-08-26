@@ -1,4 +1,18 @@
-public class LinkedList {
+public class Basics_of_LinkedList {
+
+    public static void main(String[] args) {
+        LinkedList ll = new LinkedList();
+        ll.addFirst(3);
+        ll.addFirst(2);
+        ll.addFirst(1);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.addLast(6);
+        ll.print();
+    }
+}
+
+class LinkedList{
     public static class Node{
         int data;
         Node next;
@@ -47,14 +61,5 @@ public class LinkedList {
             temp = temp.next;
         }
         System.out.print("null");
-    }
-
-    public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
-        ll.addFirst(3);
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addLast(4);
-        ll.print();
     }
 }

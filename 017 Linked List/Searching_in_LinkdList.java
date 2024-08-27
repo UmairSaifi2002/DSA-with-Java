@@ -1,27 +1,29 @@
-public class Add_in_the_Middle {
+public class Searching_in_LinkdList {
+
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         // Create a new LinkedList object
         LinkedList ll = new LinkedList();
 
-        // Add some elements to the LinkedList
+        // Add elements to the LinkedList
+        ll.addFirst(3);
         ll.addFirst(2);
         ll.addFirst(1);
-        ll.addFirst(0);
-        ll.addLast(3);
         ll.addLast(4);
         ll.addLast(5);
+        ll.addLast(6);
 
-        // Print the initial LinkedList
-        System.out.println("Initial LinkedList:");
+        // Print the LinkedList
         ll.print();
 
-        // Add a new element at the specified index in the middle of the LinkedList
-        System.out.println("Adding 6 at index 3...");
-        ll.AddInTheMiddle(3, 6);
+        // size of LinkedList
+        System.out.println(ll.size);
 
-        // Print the updated LinkedList
-        System.out.println("Updated LinkedList:");
-        ll.print();
+        // searching a node
+        int index = ll.search(5);// by Iteration
+        System.out.println("The Node is Present at "+index+" Index");
+
+        System.out.println(ll.Search(5));
     }
 }
 
@@ -40,11 +42,13 @@ class LinkedList {
     // Declare Head and Tail references to keep track of the LinkedList
     public static Node Head;
     public static Node Tail;
+    public static int size; // Creating a variable which stores the size of the LinkedList
 
     // Method to add a new element at the beginning of the LinkedList
     public void addFirst(int data) {
         // Create a new Node with the given data
         Node newNode = new Node(data);
+        size++;
 
         // If the LinkedList is empty, set both Head and Tail to the new Node
         if (Head == null) {
@@ -63,6 +67,7 @@ class LinkedList {
     public void addLast(int data) {
         // Create a new Node with the given data
         Node newNode = new Node(data);
+        size++;
 
         // If the LinkedList is empty, set both Head and Tail to the new Node
         if (Head == null) {
@@ -87,6 +92,7 @@ class LinkedList {
 
         // Create a new Node with the given data
         Node newNode = new Node(data);
+        size++;
 
         // Find the node before the insertion point
         Node temp = Head;
@@ -110,5 +116,79 @@ class LinkedList {
             temp = temp.next;
         }
         System.out.println("null");
+    }
+
+    // Method to Remove First Node from the LinkedList
+    public int removeFirst() {
+        if (size == 0) { // if the LinkedList is Empty
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        }
+        else if (size == 1) { // if the LinkedList have only one Node
+            int val = Head.data;
+            Head = Tail = null;
+            size = 0;
+            return val;
+        }
+        int val = Head.data;
+        Head = Head.next;
+        size--;
+        return val;
+    }
+
+    // Method to Remove Last Node from LinkedList
+    public int removeLast() {
+        if (size == 0) {
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        }
+        else if (size == 1) { // if the LinkedList have only one Node
+            int val = Head.data;
+            Head = Tail = null;
+            size = 0;
+            return val;
+        }
+        Node temp = Head;
+        int i = 0;
+        while (i < size-2) {
+            temp = temp.next;
+            i++;
+        }
+        int val = temp.next.data;
+        temp.next = null;
+        Tail = temp;
+        size--;
+        return val;
+    }
+
+    // Searching a Node by iteration
+    public int search(int data){
+        Node temp = Head;
+        int i = 0;
+        while (i<size) {
+            if (temp.data == data) {
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+
+    // Searching a Node by Recursively
+    public int Search(int data, Node Temp, int index) {
+        // Base Case
+        if (Temp == null) {
+            return -1;
+        }
+        // Kaam
+        if (Temp.data == data) {
+            return index;
+        }
+        else return Search(data, Temp.next, index+1);// yaha index++ nhi hoga kyuki index to pass kr rhe ho vo pass by value ho rha h.
+    }
+
+    public int Search(int data){
+        return Search(data, Head, 0);
     }
 }

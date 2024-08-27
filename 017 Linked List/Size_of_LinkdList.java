@@ -1,27 +1,21 @@
-public class Add_in_the_Middle {
+public class Size_of_LinkdList {
+
     public static void main(String[] args) {
         // Create a new LinkedList object
         LinkedList ll = new LinkedList();
 
-        // Add some elements to the LinkedList
+        // Add elements to the LinkedList
+        ll.addFirst(3);
         ll.addFirst(2);
         ll.addFirst(1);
-        ll.addFirst(0);
-        ll.addLast(3);
         ll.addLast(4);
         ll.addLast(5);
+        ll.addLast(6);
 
-        // Print the initial LinkedList
-        System.out.println("Initial LinkedList:");
+        // Print the LinkedList
         ll.print();
 
-        // Add a new element at the specified index in the middle of the LinkedList
-        System.out.println("Adding 6 at index 3...");
-        ll.AddInTheMiddle(3, 6);
-
-        // Print the updated LinkedList
-        System.out.println("Updated LinkedList:");
-        ll.print();
+        System.out.println(ll.size);
     }
 }
 
@@ -40,11 +34,13 @@ class LinkedList {
     // Declare Head and Tail references to keep track of the LinkedList
     public static Node Head;
     public static Node Tail;
+    public static int size; // Creating a variable which stores the size of the LinkedList
 
     // Method to add a new element at the beginning of the LinkedList
     public void addFirst(int data) {
         // Create a new Node with the given data
         Node newNode = new Node(data);
+        size++;
 
         // If the LinkedList is empty, set both Head and Tail to the new Node
         if (Head == null) {
@@ -63,6 +59,7 @@ class LinkedList {
     public void addLast(int data) {
         // Create a new Node with the given data
         Node newNode = new Node(data);
+        size++;
 
         // If the LinkedList is empty, set both Head and Tail to the new Node
         if (Head == null) {
@@ -87,6 +84,7 @@ class LinkedList {
 
         // Create a new Node with the given data
         Node newNode = new Node(data);
+        size++;
 
         // Find the node before the insertion point
         Node temp = Head;

@@ -1,6 +1,5 @@
-public class Size_of_LinkdList {
+public class Reverse_a_LinkedList {
 
-    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         // Create a new LinkedList object
         LinkedList ll = new LinkedList();
@@ -16,7 +15,8 @@ public class Size_of_LinkdList {
         // Print the LinkedList
         ll.print();
 
-        System.out.println(ll.size);
+        ll.reverse();
+        ll.print();
     }
 }
 
@@ -110,4 +110,105 @@ class LinkedList {
         }
         System.out.println("null");
     }
+
+    // Method to Remove First Node from the LinkedList
+    public int removeFirst() {
+        if (size == 0) { // if the LinkedList is Empty
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        }
+        else if (size == 1) { // if the LinkedList have only one Node
+            int val = Head.data;
+            Head = Tail = null;
+            size = 0;
+            return val;
+        }
+        int val = Head.data;
+        Head = Head.next;
+        size--;
+        return val;
+    }
+
+    // Method to Remove Last Node from LinkedList
+    public int removeLast() {
+        if (size == 0) {
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        }
+        else if (size == 1) { // if the LinkedList have only one Node
+            int val = Head.data;
+            Head = Tail = null;
+            size = 0;
+            return val;
+        }
+        Node temp = Head;
+        int i = 0;
+        while (i < size-2) {
+            temp = temp.next;
+            i++;
+        }
+        int val = temp.next.data;
+        temp.next = null;
+        Tail = temp;
+        size--;
+        return val;
+    }
+
+    // Searching a Node by iteration
+    public int search(int data){
+        Node temp = Head;
+        int i = 0;
+        while (i<size) {
+            if (temp.data == data) {
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+
+    // Searching a Node by Recursively
+    // Helper function for the recursion.
+    public int Search(int data, Node Temp, int index) {
+        // Base Case
+        if (Temp == null) {
+            return -1;
+        }
+        // Kaam
+        if (Temp.data == data) {
+            return index;
+        }
+        else return Search(data, Temp.next, index+1);// yaha index++ nhi hoga kyuki index to pass kr rhe ho vo pass by value ho rha h.
+    }
+    // it call the helper to search the data/key from the LinkedList 
+    // it only return the data which is returned by the helper function
+    public int Search(int data){
+        return Search(data, Head, 0);
+    }
+
+    // Reverse of the LinkedList
+    public void reverse() {
+        // Initialize three pointers: previous, current, and next
+        Node prev = null; // previous node
+        Node curr = Tail = Head; // current node, also set Tail to Head for later use
+        Node next; // next node
+    
+        // Traverse the list until the end
+        while (curr != null) {
+            // Store the next node before we change curr.next
+            next = curr.next;
+    
+            // Reverse the link of the current node
+            curr.next = prev;
+    
+            // Move prev and curr one step forward
+            prev = curr;
+            curr = next;
+        }
+    
+        // After the loop, prev is the new head of the reversed list
+        Head = prev;
+    }
+    
 }

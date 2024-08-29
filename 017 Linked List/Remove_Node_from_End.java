@@ -1,5 +1,6 @@
 public class Remove_Node_from_End {
 
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         // Create a new LinkedList object
         LinkedList ll = new LinkedList();

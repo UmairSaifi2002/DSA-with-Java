@@ -1,0 +1,288 @@
+// import java.util.*;
+// import java.util.LinkedList;
+public class Merge_Sort_in_LinkedList {
+
+    public static void main(String[] args) {
+        LinkedList ll = new LinkedList();
+        ll.addFirst(1);
+        ll.addFirst(0);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addFirst(1);
+        ll.addFirst(0);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.print();
+        ll.MergeSort();
+        // System.out.println(ll.Head);
+    }
+}
+
+class LinkedList {
+    // Define a static inner class Node to represent each element in the LinkedList
+    public static class Node {
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    // Declare Head and Tail references to keep track of the LinkedList
+    public static Node Head;
+    public static Node Tail;
+    public static int size; // Creating a variable which stores the size of the LinkedList
+
+    // Method to add a new element at the beginning of the LinkedList
+    public void addFirst(int data) {
+        // Create a new Node with the given data
+        Node newNode = new Node(data);
+        size++;
+
+        // If the LinkedList is empty, set both Head and Tail to the new Node
+        if (Head == null) {
+            Head = Tail = newNode;
+            return;
+        }
+
+        // Link the new Node to the current Head
+        newNode.next = Head;
+
+        // Update the Head reference to point to the new Node
+        Head = newNode;
+    }
+
+    // Method to add a new element at the end of the LinkedList
+    public void addLast(int data) {
+        // Create a new Node with the given data
+        Node newNode = new Node(data);
+        size++;
+
+        // If the LinkedList is empty, set both Head and Tail to the new Node
+        if (Head == null) {
+            Head = Tail = newNode;
+            return;
+        }
+
+        // Link the current Tail to the new Node
+        Tail.next = newNode;
+
+        // Update the Tail reference to point to the new Node
+        Tail = newNode;
+    }
+
+    // Method to add a new element at the specified index in the middle of the
+    // LinkedList
+    public void AddInTheMiddle(int index, int data) {
+        // If the index is 0, add the element at the beginning
+        if (index == 0) {
+            addFirst(data);
+            return;
+        }
+
+        // Create a new Node with the given data
+        Node newNode = new Node(data);
+        size++;
+
+        // Find the node before the insertion point
+        Node temp = Head;
+        int i = 0;
+        while (i < index - 1) {
+            temp = temp.next;
+            i++;
+        }
+
+        // Insert the new Node at the specified index
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
+
+    // Method to print the elements of the LinkedList
+    public void print() {
+        // Start from the Head and traverse the LinkedList until the end
+        Node temp = Head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    // Method to Remove First Node from the LinkedList
+    public int removeFirst() {
+        if (size == 0) { // if the LinkedList is Empty
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        } else if (size == 1) { // if the LinkedList have only one Node
+            int val = Head.data;
+            Head = Tail = null;
+            size = 0;
+            return val;
+        }
+        int val = Head.data;
+        Head = Head.next;
+        size--;
+        return val;
+    }
+
+    // Method to Remove Last Node from LinkedList
+    public int removeLast() {
+        if (size == 0) {
+            System.out.println("LinkedList is Empty");
+            return Integer.MIN_VALUE;
+        } else if (size == 1) { // if the LinkedList have only one Node
+            int val = Head.data;
+            Head = Tail = null;
+            size = 0;
+            return val;
+        }
+        Node temp = Head;
+        int i = 0;
+        while (i < size - 2) {
+            temp = temp.next;
+            i++;
+        }
+        int val = temp.next.data;
+        temp.next = null;
+        Tail = temp;
+        size--;
+        return val;
+    }
+
+    // Searching a Node by iteration
+    public int search(int data) {
+        Node temp = Head;
+        int i = 0;
+        while (i < size) {
+            if (temp.data == data) {
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+
+    // Searching a Node by Recursively
+    // Helper function for the recursion.
+    public int Search(int data, Node Temp, int index) {
+        // Base Case
+        if (Temp == null) {
+            return -1;
+        }
+        // Kaam
+        if (Temp.data == data) {
+            return index;
+        } else
+            return Search(data, Temp.next, index + 1);// yaha index++ nhi hoga kyuki index to pass kr rhe ho vo pass by
+                                                      // value ho rha h.
+    }
+
+    // it call the helper to search the data/key from the LinkedList
+    // it only return the data which is returned by the helper function
+    public int Search(int data) {
+        return Search(data, Head, 0);
+    }
+
+    // Reverse of the LinkedList
+    public void reverse() {
+        // Initialize three pointers: previous, current, and next
+        Node prev = null; // previous node
+        Node curr = Tail = Head; // current node, also set Tail to Head for later use
+        Node next; // next node
+
+        // Traverse the list until the end
+        while (curr != null) {
+            // Store the next node before we change curr.next
+            next = curr.next;
+
+            // Reverse the link of the current node
+            curr.next = prev;
+
+            // Move prev and curr one step forward
+            prev = curr;
+            curr = next;
+        }
+
+        // After the loop, prev is the new head of the reversed list
+        Head = prev;
+    }
+
+    // Method to find the middle node of the LinkedList
+    private Node getMid(Node head) {
+        // Initialize two pointers, slow and fast, to the head of the LinkedList
+        Node slow = head;
+        Node fast = head;
+        // Move the fast pointer two steps at a time, and the slow pointer one step at a
+        // time
+        while (fast != null && fast.next != null && fast.next.next != null) {
+            slow = slow.next; // Move the slow pointer one step
+            fast = fast.next.next; // Move the fast pointer two steps
+        }
+        // When the fast pointer reaches the end, the slow pointer will be at the middle
+        // node
+        return slow;
+    }
+
+    // Method to merge two sorted LinkedLists
+    private Node merge(Node head1, Node head2) {
+        // Create a new dummy node to serve as the head of the merged LinkedList
+        Node Mergedll = new Node(-1);
+        // Initialize a pointer to the current node in the merged LinkedList
+        Node temp = Mergedll;
+        // Merge the two LinkedLists by comparing nodes and adding the smaller one to
+        // the merged LinkedList
+        while (head1 != null && head2 != null) {
+            if (head1.data <= head2.data) {
+                temp.next = head1; // Add the smaller node from head1 to the merged LinkedList
+                head1 = head1.next; // Move to the next node in head1
+            } else {
+                temp.next = head2; // Add the smaller node from head2 to the merged LinkedList
+                head2 = head2.next; // Move to the next node in head2
+            }
+            temp = temp.next; // Move to the next node in the merged LinkedList
+        }
+        // Add any remaining nodes from head1 or head2 to the merged LinkedList
+        while (head1 != null) {
+            temp.next = head1;
+            head1 = head1.next;
+            temp = temp.next;
+        }
+        while (head2 != null) {
+            temp.next = head2;
+            head2 = head2.next;
+            temp = temp.next;
+        }
+        // Return the merged LinkedList (excluding the dummy node)
+        return Mergedll.next;
+    }
+
+    // Recursive method to perform MergeSort on the LinkedList
+    private Node MergeSort(Node head) {
+        // Base case: If the LinkedList has 0 or 1 nodes, it is already sorted
+        if (head == null || head.next == null) {
+            return head;
+        }
+        // Find the middle node of the LinkedList
+        Node mid = getMid(head);
+        // Split the LinkedList into two halves at the middle node
+        Node rightHead = mid.next;
+        mid.next = null;
+        // Recursively sort the left and right halves
+        Node newLeft = MergeSort(head);
+        Node newRight = MergeSort(rightHead);
+        // Merge the sorted left and right halves
+        return merge(newLeft, newRight);
+    }
+
+    // Method to perform MergeSort on the LinkedList and print the sorted result
+    public void MergeSort() {
+        // Call the recursive MergeSort method and update the Head reference
+        Head = MergeSort(Head);
+        // Print the sorted LinkedList
+        print();
+    }
+
+}

@@ -1,5 +1,6 @@
 public class Creating_Circular_LinkedList {
 
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(4);

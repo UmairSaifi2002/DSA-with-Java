@@ -1,6 +1,10 @@
+// Main class to test the LinkedList functionality
 public class Odd_Even_LinkedList {
     public static void main(String[] args) {
+        // Create a new LinkedList instance
         LinkedList ll = new LinkedList();
+        
+        // Add nodes to the LinkedList
         ll.addNode(8);
         ll.addNode(12);
         ll.addNode(10);
@@ -8,23 +12,29 @@ public class Odd_Even_LinkedList {
         ll.addNode(4);
         ll.addNode(1);
         ll.addNode(6);
+        
+        // Print the original LinkedList
         ll.print();
+        
+        // Call the OddEven method to separate odd and even nodes
         ll.OddEven(ll);
     }
 }
 
-// Node class
+// Node class representing each element in the LinkedList
 class Node {
     int data;
     Node next;
+
     public Node(int data) {
         this.data = data;
         this.next = null;
     }
 }
 
+// LinkedList class with methods to add nodes, print the list, and separate odd and even nodes
 class LinkedList {
-    // Define a static inner class Node to represent each element in the LinkedList
+    // Head and Tail pointers to keep track of the LinkedList
     Node Head;
     Node Tail;
 
@@ -54,28 +64,31 @@ class LinkedList {
         System.out.println("null");
     }
 
-    public void OddEven(LinkedList ll){
+    // Method to separate odd and even nodes and print the result
+    public void OddEven(LinkedList ll) {
+        // Create separate LinkedLists for odd and even nodes
         LinkedList odd = new LinkedList();
         LinkedList even = new LinkedList();
-        // ll.print();
+
+        // Traverse the original LinkedList
         Node temp = ll.Head;
-        // System.out.println(temp.data);
+
+        // Separate odd and even nodes
         while (temp != null) {
-            if (temp.data%2 == 0) {
+            if (temp.data % 2 == 0) {
                 even.addNode(temp.data);
             } else {
                 odd.addNode(temp.data);
             }
             temp = temp.next;
         }
-        // odd.print();
-        // even.print();
-        // System.out.println(odd.Tail.data);
-        // System.out.println(even.Tail.data);
-        even.Tail.next = odd.Head;
-        LinkedList result = even;
-        result.print(); 
-    }
 
+        // Combine the even and odd LinkedLists
+        even.Tail.next = odd.Head;
+
+        // Print the resulting LinkedList
+        LinkedList result = even;
+        result.print();
+    }
 }
 

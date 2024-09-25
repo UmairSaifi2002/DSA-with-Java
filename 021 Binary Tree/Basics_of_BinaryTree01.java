@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+
 public class Basics_of_BinaryTree01 {
 
     // Node class representing each node of the binary tree
@@ -15,7 +16,7 @@ public class Basics_of_BinaryTree01 {
             this.right = null;
         }
     }
-
+    
     // BinaryTree class that contains methods to build and traverse the tree
     static class BinaryTree {
         static int index = -1; // Index used to track position in the array
@@ -39,6 +40,7 @@ public class Basics_of_BinaryTree01 {
             // Return the created node (root of this subtree)
             return newNode;
         }
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
     // Pre-order traversal: Root -> Left -> Right
@@ -50,6 +52,7 @@ public class Basics_of_BinaryTree01 {
         System.out.print(root.data + " "); // Print the current node
         preOrder(root.left);  // Recur on the left subtree
         preOrder(root.right); // Recur on the right subtree
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
     // In-order traversal: Left -> Root -> Right
@@ -61,6 +64,7 @@ public class Basics_of_BinaryTree01 {
         inOrder(root.left);  // Recur on the left subtree
         System.out.print(root.data + " "); // Print the current node
         inOrder(root.right); // Recur on the right subtree
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
     // Post-order traversal: Left -> Right -> Root
@@ -72,6 +76,7 @@ public class Basics_of_BinaryTree01 {
         ppostOrder(root.left);  // Recur on the left subtree
         ppostOrder(root.right); // Recur on the right subtree
         System.out.print(root.data + " "); // Print the current node
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
     // Level-order traversal: Traverse each level of the tree
@@ -83,7 +88,7 @@ public class Basics_of_BinaryTree01 {
         // Queue to store the nodes at each level
         Queue<Node> q = new LinkedList<>();
         q.add(root);  // Start with the root node
-        q.add(null);  // Add a null marker to indicate end of the current level
+        q.add(null);  // Add a null marker to indicate the end of the current level
 
         // Loop until the queue is empty
         while (!q.isEmpty()) {
@@ -91,11 +96,11 @@ public class Basics_of_BinaryTree01 {
 
             // If we encounter a null, we reached the end of a level
             if (currNode == null) {
-                System.out.println();  // Move to the next line for new level
+                System.out.println();  // Move to the next line for the new level
                 if (q.isEmpty()) {
                     break;  // If queue is empty, all levels are printed
                 } else {
-                    q.add(null);  // Add another null to mark the end of next level
+                    q.add(null);  // Add another null to mark the end of the next level
                 }
             } else {
                 // Print the current node's data
@@ -112,24 +117,111 @@ public class Basics_of_BinaryTree01 {
                 }
             }
         }
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
+    // Method to count the total number of nodes in the tree
     public static int countOfNodes(Node root){
         if (root == null) {
-            return 0;
+            return 0; // Base case: if the root is null, return 0
         }
-        int leftNodes = countOfNodes(root.left);
-        int rightNodes = countOfNodes(root.right);
-        return leftNodes+rightNodes+1;
+
+        int leftNodes = countOfNodes(root.left);   // Count nodes in the left subtree
+        int rightNodes = countOfNodes(root.right); // Count nodes in the right subtree
+
+        return leftNodes + rightNodes + 1; // Total nodes = left + right + current
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
+    // Method to calculate the sum of all nodes in the tree
     public static int sumOfNodes(Node root){
+        if (root == null) {
+            return 0;  // Base case: if the root is null, return 0
+        }
+
+        int leftNodesSum = sumOfNodes(root.left);   // Sum of nodes in the left subtree
+        int rightNodesSum = sumOfNodes(root.right); // Sum of nodes in the right subtree
+
+        return leftNodesSum + rightNodesSum + root.data; // Total sum = left + right + current node's data
+        // Time complexity: O(n), where n is the number of nodes in the tree.
+    }
+
+    // Method to calculate the height of the binary tree
+    public static int height(Node root){
+        if (root == null) {
+            return 0;  // Base case: if the root is null, height is 0
+        }
+
+        int leftHeight = height(root.left);   // Height of the left subtree
+        int rightHeight = height(root.right); // Height of the right subtree
+
+        // Return the maximum height of either subtree plus one (for the root)
+        int max = Math.max(leftHeight, rightHeight) + 1;
+
+        return max;
+        // Time complexity: O(n), where n is the number of nodes in the tree.
+    }
+
+    // Method to calculate the diameter of the tree (O(n^2) solution)
+    public static int Diameter01(Node root){ // O(n^2)
+        // Base case: if the root is null, the diameter is 0
         if (root == null) {
             return 0;
         }
-        int leftNodesSum = sumOfNodes(root.left);
-        int rightNodesSum = sumOfNodes(root.right);
-        return leftNodesSum+rightNodesSum+root.data;
+
+        // Case 1: Diameter is in the left subtree
+        int d1 = Diameter01(root.left);
+
+        // Case 2: Diameter is in the right subtree
+        int d2 = Diameter01(root.right);
+
+        // Case 3: Diameter passes through the root (height of left + height of right + 1)
+        int d3 = height(root.left) + height(root.right) + 1;
+
+        // Return the maximum diameter among the three cases
+        int myDiameter = Math.max(d1, Math.max(d2, d3));
+
+        return myDiameter;
+        // Time complexity: O(n^2), where n is the number of nodes (height calculation is O(n) for each node).
+    }
+
+    // Helper class to store both height and diameter
+    static class TreeInfo {
+        int ht;    // Height of the tree
+        int diam;  // Diameter of the tree
+
+        // Constructor to initialize height and diameter
+        TreeInfo(int ht, int diam){
+            this.ht = ht;
+            this.diam = diam;
+        }
+    }
+
+    // Method to calculate the diameter using an optimized approach (O(n) solution)
+    public static TreeInfo Diameter02(Node root){ // O(n)
+        // Base case: if the root is null, return height and diameter as 0
+        if (root == null) {
+            return new TreeInfo(0, 0);
+        }
+
+        // Recursively find the height and diameter of the left and right subtrees
+        TreeInfo left = Diameter02(root.left);
+        TreeInfo right = Diameter02(root.right);
+
+        // Calculate the height of the current node
+        int myHeight = Math.max(left.ht, right.ht) + 1;
+
+        // Calculate the diameter of the current node (similar to Diameter01)
+        int d1 = left.diam;
+        int d2 = right.diam;
+        int d3 = left.ht + right.ht + 1;
+
+        int myDiameter = Math.max(Math.max(d2, d3), d1);
+
+        // Return a new TreeInfo object with the calculated height and diameter
+        TreeInfo myInfo = new TreeInfo(myHeight, myDiameter);
+        return myInfo;
+        // Time complexity: O(n), where n is the number of nodes in the tree.
     }
 
     // Main method: Entry point of the program
@@ -169,5 +261,13 @@ public class Basics_of_BinaryTree01 {
         // Perform and print the Sum of Nodes
         int sum = sumOfNodes(root);
         System.out.println(sum);
+
+        // Perform and print the diameter
+        int diameter = Diameter01(root);
+        System.out.println(diameter);
+
+        //
+        TreeInfo diameter1 = Diameter02(root);
+        System.out.println(diameter1.diam);
     }
 }

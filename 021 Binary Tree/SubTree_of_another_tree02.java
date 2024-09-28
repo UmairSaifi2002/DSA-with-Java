@@ -61,9 +61,9 @@ public class SubTree_of_another_tree02 {
         Node node1 = b1.BuildTree(arr1);
 
         // // Create the subtree
-        int arr2[] = {2, 4, -1, -1, -1};
+        int arr2[] = {2, 4, -1, -1, -1}; // it gives -> false
         // Create the subtree
-        // int arr2[] = {2, 4, -1, -1, 5, -1, -1};
+        // int arr2[] = {2, 4, -1, -1, 5, -1, -1}; // it gives -> true
         BinaryTree b2 = new BinaryTree();
         // Reset the static index again before building the subtree
         BinaryTree.index = -1;

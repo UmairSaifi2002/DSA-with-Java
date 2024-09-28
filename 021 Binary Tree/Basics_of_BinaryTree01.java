@@ -238,36 +238,48 @@ public class Basics_of_BinaryTree01 {
 
         // Print the root node data to verify the tree is built correctly
         System.out.println(root.data);
+        // output -> 1
 
         // Perform and print pre-order traversal
         preOrder(root);
         System.out.println();
+        // output -> 1 2 4 5 3 6
 
         // Perform and print in-order traversal
         inOrder(root);
         System.out.println();
+        // output -> 4 2 5 1 3 6
 
         // Perform and print post-order traversal
         ppostOrder(root);
         System.out.println();
+        // output -> 4 5 2 6 3 1
 
         // Perform and print level-order traversal
         levelOrder(root);
+        // output 
+        // 1
+        // 2 3
+        // 4 5 6
 
         // Perform and print the count of Nodes
         int count = countOfNodes(root);
         System.out.println(count);
+        // output -> 6
 
         // Perform and print the Sum of Nodes
         int sum = sumOfNodes(root);
         System.out.println(sum);
+        // output -> 21
 
         // Perform and print the diameter
         int diameter = Diameter01(root);
         System.out.println(diameter);
+        // output -> 5
 
-        //
+        // Perform and print the diameter
         TreeInfo diameter1 = Diameter02(root);
         System.out.println(diameter1.diam);
+        // output -> 5
     }
 }

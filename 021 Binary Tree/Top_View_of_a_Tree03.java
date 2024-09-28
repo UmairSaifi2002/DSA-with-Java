@@ -86,3 +86,6 @@ class Info{
         this.horizontal_diatancce = horizontal_diatancce;
     }
 }
+
+// output 
+// 4 2 1 3 7

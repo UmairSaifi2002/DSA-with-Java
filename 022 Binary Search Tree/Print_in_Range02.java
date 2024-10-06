@@ -46,6 +46,7 @@ public class Print_in_Range02 {
     }
 
     // Main method, where our program starts
+    @SuppressWarnings("static-access")
     public static void main(String[] args) {
         // Array of numbers we want to add to our tree
         int arr[] = {8, 5, 3, 1, 4, 6, 10, 11, 14};

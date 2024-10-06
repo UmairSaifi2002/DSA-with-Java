@@ -39,6 +39,7 @@ public class Basics_of_BinarySearchTree {
     
 
     // Main method, where our program starts
+    @SuppressWarnings("static-access")
     public static void main(String[] args) { // Toatal Time Complexity O(n^2)
         // Array of numbers we want to add to our tree
         int arr[] = {5, 1, 3, 4, 2, 7};

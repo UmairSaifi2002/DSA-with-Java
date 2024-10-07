@@ -10,12 +10,17 @@ public class Mirror_Of_BST05 {
     }
 
     public static Node mirrorImage(Node root){
+        // if root is null and we reached to the end, then return null
         if (root == null) {
             return null;
         }
+        // storing the leftSubtree's node
         Node leftSubtree = mirrorImage(root.left);
+        // storing thr rightSubtree's node
         Node rightSubtree = mirrorImage(root.right);
 
+        // Now exchange the value of right & left Subtree's
+        // To make a Mirror of a BST
         root.left = rightSubtree;
         root.right = leftSubtree;
         return root;

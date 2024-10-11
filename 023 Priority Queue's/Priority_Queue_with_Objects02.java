@@ -2,6 +2,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Priority_Queue_with_Objects02 {
+    
     static class Student implements Comparable<Student>{ // Student has a name and rank
         String name;
         int rank;
@@ -27,6 +28,7 @@ public class Priority_Queue_with_Objects02 {
             // it follows the above rule and gives the descending order.
         }
     }
+
     public static void main(String[] args) {
         // Creating a queue to hold students in ascending order by rank
         PriorityQueue<Student> pq = new PriorityQueue<>();

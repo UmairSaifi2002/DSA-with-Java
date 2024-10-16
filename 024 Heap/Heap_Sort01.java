@@ -5,13 +5,17 @@ public class Heap_Sort01 {
         int right = 2 * i + 2; // Right child index
         int maxIdx = i;        // Index of the smallest element (initially the parent itself)
 
+        // for Max Heap
+        // if (left < size && arr[maxIdx] > arr[left]) {
         // Compare parent with the left child. If the left child is bigger, update minIdx
         if (left < size && arr[maxIdx] < arr[left]) {
             maxIdx = left;
         }
 
+        // for Max Heap
+        // if (right < size && arr[maxIdx] > arr[right]) {
         // Compare minIdx (parent or left child) with the right child
-        if (right < size && arr[maxIdx] < arr[right]) {
+        if (right < size && arr[maxIdx] > arr[right]) {
             maxIdx = right;
         }
 
@@ -32,7 +36,8 @@ public class Heap_Sort01 {
         //Step-1 build MaxHeap
         int size = arr.length;
         for (int i = size/2; i >= 0; i--) {
-            heapify(arr, i, size);
+            // here we call the heapify method for only non-leaf nodes
+            heapify(arr, i, size);// so we created a Max Heap
         }
 
         // Step-2 Push largest at the End

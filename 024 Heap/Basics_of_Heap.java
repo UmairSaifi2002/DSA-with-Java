@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Basics_of_Heap {
-    // Learn about how to insertelement in heap
+    // Learn about how to insert element in heap
     // Heap is implemented as an ArrayList
     // and Visualize as a Complete Binary Tree (CBT -> it is a tree which have fulled all the levels except last one)
     // CBT is always be add the Elements from left to right manner

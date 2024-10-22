@@ -32,7 +32,7 @@ public class Implementation_of_HashMap_Function01 {
 }
 
 // This is where we build our own HashMap from scratch
-class HashMap<K, V> {  // K (key) and V (value) can be any type, like String or Integer
+class HashMap<K, V> {  // K (key) and V (value) can be any type, like String or Integer (generic)
 
     // A Node stores both a key (country) and a value (score)
     private class Node {
@@ -107,6 +107,11 @@ class HashMap<K, V> {  // K (key) and V (value) can be any type, like String or 
 
         if (dataIndex != -1) {  // If key exists, update its value
             Node node = buckets[bucketIndex].get(dataIndex);
+            /*
+                The .get(index) method is used to retrieve an element from a specific position in a LinkedList. 
+                Since each page (bucket) in your custom HashMap is a LinkedList that holds key-value pairs (Nodes), 
+                we need a way to access a particular Node when we know its position.
+            */
             node.value = value;
         } else {  // If key doesn't exist, add it
             buckets[bucketIndex].add(new Node(key, value));
@@ -114,7 +119,8 @@ class HashMap<K, V> {  // K (key) and V (value) can be any type, like String or 
         }
 
         // Check if the notebook is too full (load factor > 2)
-        if ((double) n / N > 2.0) {
+        double lambda = (double) n/N;
+        if (lambda > 2.0) {
             rehash();  // Make a bigger notebook
         }
     }

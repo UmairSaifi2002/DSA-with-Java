@@ -168,4 +168,14 @@ class HashMap<K, V> {  // K (key) and V (value) can be any type, like String or 
     public boolean isEmpty() {
         return n == 0;
     }
+
+    public int getOrDefault(char charAt, int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getOrDefault'");
+    }
+
+    public boolean containsKey(char c) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'containsKey'");
+    }
 }

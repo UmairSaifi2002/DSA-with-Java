@@ -13,6 +13,6 @@ public class TreeSet08 {
         cities.add("Gujrat");
         cities.add("Uttrakhand");
         cities.add("Jammu & Kashmir");
-        System.out.println(cities);
+        System.out.println(cities); // -> [Delhi, Gujrat, Jammu & Kashmir, Mumbai, Uttar Pradesh, Uttrakhand]
     }
 }

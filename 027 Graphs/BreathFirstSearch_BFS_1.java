@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreathFirstSearch_BFS_1 {
@@ -62,6 +63,7 @@ public class BreathFirstSearch_BFS_1 {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
+        // Time Complexity O(V+E)
         // This is a graph in which we want to traverse using 
         // BFS - Breath first search
         //    1-----3
@@ -75,6 +77,54 @@ public class BreathFirstSearch_BFS_1 {
         // connectedVertex(graph, 0);
         BFS(graph);
     }
+    /*
+     * This is use when you have dis-joint graph
+     * 
+     * public static void BFS(ArrayList<edge> graph[], boolean visit[], int start){
+        // traverse the graph as BFS breath first search
+        Queue<Integer> q = new LinkedList<>(); // created a queue for track the nodes
+        
+        q.add(start); // add the first index in queue
+
+        // our main work starts here
+        while (!q.isEmpty()) { // run until the queue will empty
+            int curr = q.remove(); // track the node
+            if (!visit[curr]) { // check node is visited ?
+                // if it is not visited
+                System.out.print(curr+", "); // first print the node
+                visit[curr] = true; // marked the node is visited
+                for (int i = 0; i < graph[curr].size(); i++) {
+                    q.add(graph[curr].get(i).destination); // add its connected nodes to the queue
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args) {
+        // This is a graph in which we want to traverse using 
+        // BFS - Breath first search
+        // these are a single graph which is dis-joint in nature
+        //    1-----3
+        //   /        \
+        //  0          5 --- 6
+        //   
+        //    2-----4
+
+        int v = 7;   
+        ArrayList<edge> graph[] = new ArrayList[v];  
+        createGraph(graph);
+        // connectedVertex(graph, 0);
+        boolean visit[] = new boolean[graph.length]; // this array reminds that you visited the node or not
+        for (int i = 0; i < v; i++) {
+            if (!visit[i]) {
+                BFS(graph, visit, i);
+            } 
+        }
+        
+    }
+    */
 }
 
 class edge{

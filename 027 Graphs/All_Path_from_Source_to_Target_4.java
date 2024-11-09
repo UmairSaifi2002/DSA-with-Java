@@ -1,6 +1,8 @@
 import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class DepthFirstSearch_DFS_2 {
+public class All_Path_from_Source_to_Target_4 {
 
     public static void createGraph(ArrayList<edge> graph[]){
         for (int i = 0; i < 7; i++) {
@@ -37,67 +39,48 @@ public class DepthFirstSearch_DFS_2 {
         }
     }
 
-    public static void DFS(ArrayList<edge> graph[], int curr, boolean visited[]){
-        // this function is a recursive function
-        System.out.print(curr+", "); // first print the current node
-        visited[curr] = true; // make it as visited
+    public static void AllPathFromSourceToDestination(ArrayList<edge> graph[], boolean visit[],int curr, int destination, String path){
+        // Base Case: If current node is the destination, print the path.
+        if (curr == destination) {
+            System.out.println(path);
+            return;
+        }
+        // Iterate over all neighbors of the current node.
         for (int i = 0; i < graph[curr].size(); i++) {
-            edge e = graph[curr].get(i); 
-            if (!visited[e.destination]) { // if the current node connection is not visited then make a recursive call
-                DFS(graph, e.destination, visited);
+            edge e = graph[curr].get(i);
+    
+            // Check if the neighbor has not been visited in this iteration.
+            if (!visit[e.destination]) {
+                // Mark the current node as visited.
+                visit[curr] = true;
+    
+                // Recursively explore paths from the neighbor to the destination.
+                AllPathFromSourceToDestination(graph, visit, e.destination, destination, path + " -> " + e.destination);
+    
+                // Unmark the current node to explore other paths.
+                visit[curr] = false;
             }
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // creating a graph
-        // This is a graph in which we want to traverse using 
-        // DFS - Depth first search
         //    1-----3
         //   /      | \
         //  0       |  5 --- 6
         //   \      | /
         //    2-----4
-        // 0, 1, 3, 4, 2, 5, 6
-
-        int v =7;
-        @SuppressWarnings("unchecked")
+        // using Adjacency list
+        int v = 7;
         ArrayList<edge> graph[] = new ArrayList[v];
-        boolean visited[] = new boolean[graph.length];
         createGraph(graph);
-        DFS(graph, 0, visited);
-        System.out.println();
-    }
-
-    /*
-     * 
-     * public static void main(String[] args) {
-        // creating a graph
-        // This is a graph in which we want to traverse using 
-        // DFS - Depth first search
-        //    1-----3
-        //   /        \
-        //  0          5 --- 6
-        //  
-        //    2-----4
-        // 
-
-        @SuppressWarnings("unchecked")
-        int v=7;
-        ArrayList<edge> graph[] = new ArrayList[v];
+        connectedVertex(graph, 4);
         boolean visited[] = new boolean[graph.length];
-        createGraph(graph);
-
-        for(int i=0; i<v; i++){
-            if(!visited[i]){
-                DFS(graph, i, visited);
-            }
-        }
-
-        System.out.println();
+        String path = "0"; // add the node here as same as src
+        int src = 0, tar = 5;
+        AllPathFromSourceToDestination(graph, visited, src, tar, path);
     }
-    */
-
 }
 
 class edge{

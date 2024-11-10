@@ -45,6 +45,31 @@ public class TopologicalSorting_5 {
         return false;
     }
 
+    public static void TopologySortUtil(ArrayList<edge> graph[], boolean visit[], int curr, Stack<Integer> s){
+        visit[curr] = true;
+        for (int i = 0; i < graph[curr].size(); i++) {
+            edge e = graph[curr].get(i);
+            if (!visit[e.dest]) {
+                TopologySortUtil(graph, visit, e.dest, s);
+            }
+        }
+        s.push(curr);
+    }
+
+    public static void TopologySort(ArrayList<edge> graph[], int v){
+        boolean visit[] = new boolean[v];
+        Stack<Integer> s = new Stack<>();
+        for (int i = 0; i < v; i++) {
+            if (!visit[i]) {
+                TopologySortUtil(graph, visit, i, s);
+            }
+        }
+        while (!s.empty()) {
+            System.out.print(s.pop()+" -> ");
+        }
+        System.out.println();
+    }
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // Topological Sorting
@@ -65,9 +90,7 @@ public class TopologicalSorting_5 {
         int v = 6;
         ArrayList<edge> grpah[] = new ArrayList[v];
         createGraph(grpah);
-        boolean visit[] = new boolean[v];
-        boolean reccurStack[] = new boolean[v];
-        System.out.println(isCycle(grpah, visit, 0, reccurStack));
+        TopologySort(grpah, v);
     }
 }
 

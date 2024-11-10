@@ -22,7 +22,7 @@ public class Detect_Cycle_4 {
         }
     }
 
-    public static boolean isCycle(ArrayList<edge> graph[], boolean visit[], int curr, boolean reccurStack[]) {
+    public static boolean isCycleInDirectedGraph(ArrayList<edge> graph[], boolean visit[], int curr, boolean reccurStack[]) {
         // Mark the current node as visited.
         visit[curr] = true;
 
@@ -41,7 +41,7 @@ public class Detect_Cycle_4 {
             // If the neighbor has not been visited, recursively explore its neighbors.
             else if (!visit[e.dest]) {
                 // Recursively check for cycles from the neighbor.
-                if (isCycle(graph, visit, e.dest, reccurStack)) {
+                if (isCycleInDirectedGraph(graph, visit, e.dest, reccurStack)) {
                     // Cycle found in the neighbor's subtree.
                     return true;
                 }
@@ -80,7 +80,7 @@ public class Detect_Cycle_4 {
 
         for (int i = 0; i < 4; i++) {
             if (!visit[i]) {
-                boolean cycleDetect = isCycle(graph, visit, i, reccurStack); 
+                boolean cycleDetect = isCycleInDirectedGraph(graph, visit, i, reccurStack); 
                 if (cycleDetect) {
                     System.out.println(cycleDetect);
                     break;

@@ -9,5 +9,7 @@ public class first {
         // here we use '\n' -> it means move to the next line
         System.out.print("Hello, Umair!...\n");
         System.out.print("Hello world!\n");
+
+        System.out.println("Hello New Comment")
     }
 }
